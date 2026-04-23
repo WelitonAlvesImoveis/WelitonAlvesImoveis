@@ -199,23 +199,27 @@ p.hero-description,
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Ajustes desktop: .institutional-grid, .institutional-content, .institutional-card,
+   .institutional-media, .institutional-image-wrapper, .institutional-image */
 .institutional-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-12);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
+  gap: clamp(var(--space-8), 3.2vw, var(--space-14, 3.5rem));
+  align-items: center;
 }
 
 .institutional-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
 }
 
 .institutional-card {
   width: 100%;
-  max-width: 740px;
-  margin-top: var(--space-6);
+  max-width: 760px;
+  margin-top: 0;
   padding: clamp(var(--space-6), 2.8vw, var(--space-10));
   display: flex;
   flex-direction: column;
@@ -248,26 +252,27 @@ p.hero-description,
 .institutional-media {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
+  min-width: 0;
 }
 
 .institutional-image-wrapper {
   width: 100%;
-  max-width: 480px;
-  height: auto;
-  aspect-ratio: auto;
+  max-width: 560px;
+  aspect-ratio: 5 / 4;
   overflow: hidden;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-strong);
   background: var(--color-surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .institutional-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 cite.institutional-author {
@@ -548,28 +553,22 @@ cite.institutional-author span {
   }
 
   .institutional-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-12);
-  align-items: center;
-}
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
 
   .institutional-media {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+    justify-content: flex-start;
+  }
 
   .institutional-card {
+    max-width: none;
     height: fit-content;
   }
 
   .institutional-image-wrapper {
-  width: 100%;
-  max-width: 480px;
-  height: auto; /* IMPORTANTE */
-  aspect-ratio: auto; /* remove a forçação */
-}
+    max-width: 100%;
+  }
 
   .services-grid,
   .partners-grid {
@@ -648,20 +647,24 @@ cite.institutional-author span {
     max-width: none;
     font-size: var(--fs-base);
     line-height: 1.72;
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+    overflow-wrap: break-word;
   }
 
   .institutional-image-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 2;
     border-radius: var(--radius-lg);
   }
 
   .institutional-image {
-  width: 100%;
-  height: auto; /* ESSENCIAL */
-  object-fit: contain; /* evita corte/distorção */
-  display: block;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   .services-section,
   .partners-section {
