@@ -88,9 +88,3 @@ README.md
 ## Objetivo do Projeto
 
 Criar uma plataforma profissional para captação de clientes e gerenciamento interno de imóveis, destacando a experiência jurídica do corretor como diferencial competitivo.
-
----
-
-## Status
-
-Em desenvolvimento – MVP com prazo até 25/03/2025.
