@@ -48,8 +48,6 @@ export const listAllProperties = async (req, res, next) => {
 // Privado (admin): criar
 export const createProperty = async (req, res, next) => {
   try {
-    console.log("BODY:", req.body);
-    console.log("FILES:", req.files);
 
     const {
       title,
