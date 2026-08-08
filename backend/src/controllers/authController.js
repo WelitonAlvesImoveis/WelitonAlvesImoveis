@@ -1,6 +1,18 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import Admin from "../models/Admin.js";
+
+const isValidRegisterKey = (provided) => {
+  const expected = process.env.REGISTER_SECRET_KEY;
+  if (!expected || !provided) return false;
+
+  const providedBuf = Buffer.from(String(provided));
+  const expectedBuf = Buffer.from(expected);
+
+  if (providedBuf.length !== expectedBuf.length) return false;
+  return crypto.timingSafeEqual(providedBuf, expectedBuf);
+};
 
 const signToken = (adminId) => {
   return jwt.sign({ sub: adminId }, process.env.JWT_SECRET, {
@@ -11,6 +23,11 @@ const signToken = (adminId) => {
 // 3.1 Registrar (cria admin + devolve token)
 
 export const registerAdmin = async (req, res) => {
+  const registerKey = req.headers["x-register-key"];
+  if (!isValidRegisterKey(registerKey)) {
+    return res.status(403).json({ error: "Não autorizado" });
+  }
+
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
