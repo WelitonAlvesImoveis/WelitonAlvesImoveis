@@ -194,7 +194,7 @@ p.hero-description,
 .institutional-section {
   padding-top: var(--space-20);
   padding-bottom: var(--space-12);
-  background: var(--color-surface-2);
+  background: var(--color-surface-3);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
@@ -303,7 +303,7 @@ cite.institutional-author span {
   position: relative;
   padding-top: var(--space-12);
   padding-bottom: var(--space-12);
-  background: var(--color-surface-3);
+  background: var(--color-surface-1);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }

@@ -142,10 +142,10 @@ form.addEventListener("submit", async (event) => {
       throw new Error(data.message || "Erro ao atualizar imóvel.");
     }
 
-    alert("Imóvel atualizado com sucesso.");
+    await showMessage("Imóvel atualizado com sucesso.", "success");
     window.location.href = "./dashboard.html";
   } catch (error) {
-    alert(error.message);
+    showMessage(error.message, "error");
   }
 });
 
@@ -180,10 +180,10 @@ document.addEventListener("click", async (event) => {
       throw new Error(data.message || "Erro ao excluir imagem.");
     }
 
-    alert("Imagem removida com sucesso.");
+    showMessage("Imagem removida com sucesso.", "success");
     loadProperty();
   } catch (error) {
-    alert(error.message);
+    showMessage(error.message, "error");
   }
 });
 

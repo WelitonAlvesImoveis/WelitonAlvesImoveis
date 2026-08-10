@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="../assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="../assets/fav/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="180x180" href="../assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" sizes="192x192" href="../assets/fav/android-chrome-192x192.png">
+    <link rel="icon" type="image/x-icon" sizes="512x512" href="../assets/fav/android-chrome-512x512.png">
+
     <title>Editar imóvel</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +20,7 @@
     />
 
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/message-modal.css" />
     <link rel="stylesheet" href="../css/edit-property.css" />
   </head>
 
@@ -104,7 +112,8 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="state">Estado</label>
-                <input type="text" id="state" name="state" maxlength="2" required />
+                <input type="text" id="state" name="state" value="ES" maxlength="2" disabled />
+                <input type="hidden" name="state" value="ES" />
               </div>
 
               <div class="form-group">
@@ -179,6 +188,7 @@
 
     <script src="../js/config.js"></script>
     <script src="../js/youtube-utils.js"></script>
+    <script src="../js/message-modal.js"></script>
     <script src="../js/edit-property.js"></script>
   </body>
 </html>

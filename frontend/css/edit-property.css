@@ -1,11 +1,8 @@
-/* Alterado: fundo da página, cabeçalho, botões, alertas, formulário, galeria atual e estados de foco/hover. */
+/* Alterado: unificado com o padrão visual do dashboard (superfícies sólidas, bordas de 2px, sem gradientes). */
 .edit-property-page {
   min-height: 100vh;
   padding: 40px 18px 64px;
-  background:
-    radial-gradient(circle at top left, rgba(var(--color-yellow-rgb), 0.18), transparent 28%),
-    radial-gradient(circle at 84% 16%, rgba(var(--color-primary-rgb), 0.09), transparent 22%),
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 1) 0%, #e7eef3 52%, #dde7ef 100%);
+  background: var(--color-surface-2);
   color: var(--color-text);
 }
 
@@ -14,40 +11,12 @@
   margin: 0 auto;
 }
 
-.edit-property-header,
-.edit-property-card {
-  position: relative;
-  overflow: hidden;
-}
-
 .edit-property-header {
   margin-bottom: 28px;
   padding: 36px;
-  background:
-    linear-gradient(135deg, rgba(var(--color-white-rgb), 0.98), rgba(var(--color-primary-rgb), 0.05));
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border-strong);
   border-radius: 32px;
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
-.edit-property-header::before,
-.edit-property-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.edit-property-header::before {
-  background:
-    radial-gradient(circle at top right, rgba(var(--color-yellow-rgb), 0.2), transparent 28%),
-    linear-gradient(120deg, transparent 0%, rgba(var(--color-white-rgb), 0.18) 100%);
-}
-
-.edit-property-header__content,
-.edit-property-card > * {
-  position: relative;
-  z-index: 1;
 }
 
 .page-eyebrow {
@@ -57,7 +26,7 @@
   margin-bottom: 14px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(var(--color-yellow-rgb), 0.18);
+  background: rgba(var(--color-brown-rgb), 0.12);
   color: var(--color-primary);
   font-size: 0.78rem;
   font-weight: var(--fw-bold);
@@ -80,7 +49,7 @@
 .edit-property-header h1 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 0.98;
   letter-spacing: -0.05em;
   font-weight: var(--fw-extrabold);
@@ -95,68 +64,11 @@
   line-height: 1.75;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 0 24px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  font-size: 0.96rem;
-  font-weight: var(--fw-semibold);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
-  cursor: pointer;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--color-action), var(--color-action-hover));
-  color: var(--color-white);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-action-hover), #041931);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
-.btn-secondary {
-  background: rgba(var(--color-white-rgb), 0.82);
-  color: var(--color-text);
-  border-color: rgba(var(--color-primary-rgb), 0.12);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
-.btn-secondary:hover {
-  border-color: rgba(var(--color-yellow-rgb), 0.4);
-  color: var(--color-action);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
 .edit-property-card {
   padding: 32px;
-  background:
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 0.98), rgba(var(--color-primary-rgb), 0.05));
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border-strong);
   border-radius: 32px;
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
-}
-
-.edit-property-card::before {
-  background:
-    radial-gradient(circle at top right, rgba(var(--color-primary-rgb), 0.12), transparent 22%),
-    linear-gradient(180deg, transparent, rgba(var(--color-white-rgb), 0.14));
 }
 
 #loading-message,
@@ -189,32 +101,16 @@
 
 .form-section,
 .current-images-section {
-  position: relative;
   padding: 26px;
-  background: rgba(var(--color-white-rgb), 0.82);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  background: var(--color-surface-2);
+  border: 2px solid var(--color-border-strong);
   border-radius: 26px;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.form-section::before,
-.current-images-section::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(var(--color-orange-rgb), 0.44), transparent 78%);
+  transition: border-color 0.2s ease;
 }
 
 .form-section:hover,
 .current-images-section:hover {
-  transform: translateY(-2px);
-  border-color: rgba(var(--color-yellow-rgb), 0.28);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
+  border-color: var(--color-primary);
 }
 
 .form-section-heading {
@@ -231,7 +127,7 @@
   min-width: 48px;
   height: 48px;
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(var(--color-yellow-rgb), 0.22), rgba(var(--color-orange-rgb), 0.12));
+  background: rgba(var(--color-primary-rgb), 0.1);
   color: var(--color-primary);
   font-size: 0.95rem;
   font-weight: var(--fw-extrabold);
@@ -281,18 +177,12 @@
 .form-group input,
 .form-group textarea {
   width: 100%;
-  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  border: 2px solid var(--color-border-strong);
   border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 0.98), rgba(var(--color-primary-rgb), 0.04));
+  background: var(--color-surface);
   color: var(--color-text);
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease,
-    background 0.2s ease;
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
+  transition: border-color 0.2s ease;
 }
 
 .form-group input {
@@ -311,25 +201,28 @@
   text-transform: uppercase;
 }
 
+.form-group input:disabled {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
 .form-group input:hover,
 .form-group textarea:hover {
-  border-color: rgba(var(--color-yellow-rgb), 0.28);
-  transform: translateY(-1px);
+  border-color: var(--color-primary);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--color-action);
-  background: rgba(var(--color-white-rgb), 0.98);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.12);
 }
 
 .form-group--file input[type='file'] {
   min-height: auto;
   padding: 16px;
   border-style: dashed;
-  background:
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 0.96), rgba(var(--color-primary-rgb), 0.05));
+  background: var(--color-surface-2);
   cursor: pointer;
 }
 
@@ -344,14 +237,12 @@
   cursor: pointer;
   transition:
     background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.2s ease;
 }
 
 .form-group--file input[type='file']::file-selector-button:hover {
   background: rgba(var(--color-primary-rgb), 0.14);
   border-color: rgba(var(--color-primary-rgb), 0.24);
-  transform: translateY(-1px);
 }
 
 .checkbox-group {
@@ -363,10 +254,9 @@
   align-items: center;
   gap: 12px;
   padding: 18px;
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  border: 2px solid var(--color-border-strong);
   border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 0.96), rgba(var(--color-primary-rgb), 0.05));
+  background: var(--color-surface);
   color: var(--color-text-soft);
   cursor: pointer;
 }
@@ -401,18 +291,16 @@
   margin: 0;
   padding: 18px;
   border-radius: 18px;
-  background: rgba(var(--color-white-rgb), 0.84);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
   color: var(--color-text-muted);
 }
 
 .current-image-card {
   padding: 14px;
   border-radius: 22px;
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
-  background:
-    linear-gradient(180deg, rgba(var(--color-white-rgb), 0.98), rgba(var(--color-primary-rgb), 0.05));
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
+  border: 2px solid var(--color-border-strong);
+  background: var(--color-surface);
 }
 
 .current-image-card img {
@@ -443,19 +331,15 @@
   font-weight: var(--fw-semibold);
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.25s ease,
     border-color 0.25s ease,
     background 0.25s ease,
     color 0.25s ease;
 }
 
 .current-image-card button:hover {
-  transform: translateY(-2px);
   background: var(--color-danger);
   color: var(--color-white);
   border-color: var(--color-danger);
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
 }
 
 .edit-property-actions {
@@ -464,12 +348,11 @@
   padding-top: 8px;
 }
 
-.btn:focus-visible,
 .form-group input:focus-visible,
 .form-group textarea:focus-visible,
 .current-image-card button:focus-visible {
   outline: none;
-  box-shadow: 0 4px 12px rgba(16, 16, 16, 0.06);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.14);
 }
 
 @media (max-width: 720px) {
@@ -526,4 +409,3 @@
     transition: none;
   }
 }
-

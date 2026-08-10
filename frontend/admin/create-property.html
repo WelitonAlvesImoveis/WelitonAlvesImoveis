@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="../assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="../assets/fav/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="180x180" href="../assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" sizes="192x192" href="../assets/fav/android-chrome-192x192.png">
+    <link rel="icon" type="image/x-icon" sizes="512x512" href="../assets/fav/android-chrome-512x512.png">
+
     <title>Cadastrar imóvel</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,27 +44,6 @@
         <p id="error-message" class="hidden error-message" role="alert"></p>
 
         <div class="create-property-layout">
-          <aside class="form-sidebar" aria-label="Orientações de cadastro">
-            <section class="sidebar-panel">
-              <span class="sidebar-panel__eyebrow">Guia Rápido</span>
-              <h2>Deixe a apresentação mais forte</h2>
-
-              <ul class="sidebar-list">
-                <li>Use um título específico com diferencial real do imóvel.</li>
-                <li>Descreva localização, acabamento e benefícios da rotina.</li>
-                <li>Escolha fotos iluminadas e variadas para gerar confiança.</li>
-              </ul>
-            </section>
-
-            <section class="sidebar-panel sidebar-panel--accent">
-              <span class="sidebar-chip">Checklist</span>
-              <p>
-                Antes de salvar, revise preço, bairro, endereço e a coerência
-                entre descrição e imagens enviadas.
-              </p>
-            </section>
-          </aside>
-
           <form id="create-property-form" class="create-property-form">
             <div class="form-section">
               <div class="form-section-heading">
@@ -156,9 +142,9 @@
                     value="ES"
                     maxlength="2"
                     autocomplete="address-level1"
-                    placeholder="Ex.: ES"
-                    required
+                    disabled
                   />
+                  <input type="hidden" name="state" value="ES" />
                 </div>
 
                 <div class="form-group">

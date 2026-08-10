@@ -1,0 +1,115 @@
+/* =========================================================
+   MENSAGEM CUSTOMIZADA (substitui o alert() nativo)
+   Segue a paleta, tipografia e bordas do restante do sistema.
+========================================================= */
+.app-message-container {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100% - 32px, 460px);
+  pointer-events: none;
+}
+
+.app-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-body);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.app-message.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.app-message--success {
+  border-color: rgba(var(--color-success-rgb), 0.35);
+}
+
+.app-message--error {
+  border-color: rgba(var(--color-danger-rgb), 0.35);
+}
+
+.app-message__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  color: var(--color-surface);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.app-message--success .app-message__icon {
+  background: var(--color-success);
+}
+
+.app-message--error .app-message__icon {
+  background: var(--color-danger);
+}
+
+/* O tipo da mensagem e sinalizado pelo icone e pela borda; o texto usa a cor
+   padrao para garantir contraste de leitura (WCAG AA) em mensagens longas. */
+.app-message__text {
+  flex: 1 1 auto;
+  margin: 0;
+  padding-top: 3px;
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+}
+
+.app-message__close {
+  flex: 0 0 auto;
+  padding: 0 2px;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.app-message__close:hover {
+  color: var(--color-text);
+}
+
+.app-message__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.14);
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 640px) {
+  .app-message-container {
+    top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-message {
+    transition: none;
+  }
+}

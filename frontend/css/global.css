@@ -6,26 +6,26 @@
   --color-graphite: #1a1a1a;
   --color-primary: #265997;
   --color-primary-dark: #123963;
-  --color-brown: #8b6f47;          
-  --color-brown-dark: #6b5235;    
-  --color-brown-light: #ad9777;    
+  --color-brown: #ad8049;          
+  --color-brown-dark: #645343;    
+  --color-brown-light: #b3a08c;    
 
   /* RGB helpers */
   --color-white-rgb: 245, 244, 242;
   --color-graphite-rgb: 26, 26, 26;
   --color-primary-rgb: 38, 89, 151;
   --color-primary-dark-rgb: 18, 57, 99;
-  --color-brown-rgb: 139, 111, 71;
-  --color-brown-dark-rgb: 107, 82, 53;
-  --color-brown-light-rgb: 196, 168, 130;
+  --color-brown-rgb: 138, 115, 87;
+  --color-brown-dark-rgb: 100, 83, 67;
+  --color-brown-light-rgb: 179, 160, 140;
   --color-success-rgb: 31, 143, 95;
   --color-danger-rgb: 194, 65, 65;
 
   /* Surface */
-  --color-primary-soft: #e8eef5;
-  --color-surface: #ffffff;
-  --color-surface-2: #f0ede8; 
-  --color-surface-3: #e8eef5;     
+  --color-primary-soft: #fafafa;
+  --color-surface: #fbfcfd;
+  --color-surface-2: #e9edf3;  
+  --color-surface-3: #eceff3; 
 
   /* Texto */
   --color-text: var(--color-graphite);

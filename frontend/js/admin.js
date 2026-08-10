@@ -155,10 +155,10 @@ document.addEventListener("click", async (event) => {
       throw new Error(data.message || "Erro ao excluir imóvel.");
     }
 
-    alert("Imóvel removido com sucesso.");
+    await showMessage("Imóvel removido com sucesso.", "success");
     location.reload();
   } catch (error) {
-    alert(error.message);
+    showMessage(error.message, "error");
   }
 });
 

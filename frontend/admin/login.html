@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="../assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="../assets/fav/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="180x180" href="../assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" sizes="192x192" href="../assets/fav/android-chrome-192x192.png">
+    <link rel="icon" type="image/x-icon" sizes="512x512" href="../assets/fav/android-chrome-512x512.png">
+
     <title>Login Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +24,6 @@
     <main class="login-page">
       <section class="login-card">
         <h1>Login</h1>
-        <p>Faça login para gerenciar os imóveis.</p>
 
         <form id="login-form">
           <div class="form-group">
@@ -30,7 +36,7 @@
             <input type="password" id="password" class="form-control" required />
           </div>
 
-          <button type="submit">Entrar</button>
+          <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
 
         <p id="login-message" class="form-message" role="alert" aria-live="polite"></p>
