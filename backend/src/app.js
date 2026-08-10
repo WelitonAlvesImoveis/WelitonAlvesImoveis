@@ -4,6 +4,7 @@ import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import propertyRoutes from "./routes/propertyRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
+import { notFoundHandler, errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 
@@ -36,5 +37,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/uploads", uploadRoutes);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export default app;
