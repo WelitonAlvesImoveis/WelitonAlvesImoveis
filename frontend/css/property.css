@@ -131,6 +131,10 @@
   border-radius: 32px;
 }
 
+.gallery-stage {
+  position: relative;
+}
+
 .main-image {
   width: 100%;
   height: clamp(320px, 48vw, 620px);
@@ -138,6 +142,55 @@
   border-radius: 24px;
   display: block;
   background: var(--color-surface-2);
+}
+
+/* Setas sobrepostas a imagem principal */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  padding-bottom: 4px;
+  border: 1px solid rgba(var(--color-graphite-rgb), 0.1);
+  border-radius: var(--radius-pill);
+  background: rgba(var(--color-white-rgb), 0.78);
+  color: var(--color-text);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.gallery-nav--prev {
+  left: 14px;
+}
+
+.gallery-nav--next {
+  right: 14px;
+}
+
+.gallery-nav:hover {
+  background: var(--color-surface);
+  border-color: var(--color-brown);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.gallery-nav:focus-visible {
+  outline: none;
+  border-color: var(--color-action);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.18);
+}
+
+/* Ocultas quando o imovel tem apenas uma imagem */
+.gallery-nav[hidden] {
+  display: none;
 }
 
 .thumbnail-list {
@@ -158,73 +211,139 @@
   cursor: pointer;
   border: 2px solid var(--color-border-strong);
   background: var(--color-surface-2);
-  transition: border-color 0.25s ease;
+  opacity: 0.68;
+  transition:
+    border-color 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .thumbnail-list img:hover {
   border-color: var(--color-primary);
+  opacity: 1;
 }
 
+/* Miniatura correspondente a imagem exibida no momento */
+.thumbnail-list img.is-active {
+  border-color: var(--color-brown);
+  opacity: 1;
+}
+
+.thumbnail-list img:focus-visible {
+  outline: none;
+  border-color: var(--color-action);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.18);
+  opacity: 1;
+}
+
+/* =========================================================
+   INFORMACOES DO IMOVEL
+   Sem caixa/borda: a hierarquia vem da tipografia, do
+   espacamento e de divisores discretos.
+========================================================= */
 .property-info-card {
-  padding: 28px;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border-strong);
-  border-radius: 32px;
+  padding: 4px 0 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+/* Bloco principal: titulo + preco */
+.property-info-head {
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .property-info h2 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
+  color: var(--color-primary-dark);
 }
 
 .price {
-  margin-top: 18px;
-  font-size: 2rem;
+  margin-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
   font-weight: var(--fw-extrabold);
   line-height: 1.1;
-  color: var(--color-orange);
+  letter-spacing: -0.02em;
+  color: var(--color-brown);
 }
 
-.property-meta {
+/* Caracteristicas do imovel */
+.property-facts {
   display: grid;
-  gap: 12px;
-  margin-top: 24px;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
 }
 
-.location,
-.address {
-  margin: 0;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border-strong);
+.property-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.property-fact__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  color: var(--color-brown-dark);
+  font-size: var(--fs-md);
+  line-height: 1;
+}
+
+.property-fact__body {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.property-fact__label {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.property-fact__value {
+  margin: 2px 0 0;
   color: var(--color-text-soft);
-  line-height: 1.65;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
 }
 
+/* Descricao */
 .description-box {
-  margin-top: 24px;
-  padding: 24px;
-  border-radius: 24px;
-  border: 1px solid var(--color-border-strong);
-  background: var(--color-surface-2);
+  margin-top: var(--space-6);
+  padding: var(--space-6) 0 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  background: none;
 }
 
 .description-box h3 {
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-3);
   font-family: var(--font-heading);
-  font-size: 1.35rem;
-  color: var(--color-text);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary-dark);
 }
 
 .description-box p {
   margin: 0;
   color: var(--color-text-muted);
-  line-height: 1.8;
+  line-height: var(--lh-relaxed);
 }
 
 .property-video-card {
@@ -272,10 +391,23 @@
 
   .property-header__content,
   .gallery-card,
-  .property-info-card,
   .property-video-card {
     padding: 22px;
     border-radius: 24px;
+  }
+
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.7rem;
+  }
+
+  .gallery-nav--prev {
+    left: 10px;
+  }
+
+  .gallery-nav--next {
+    right: 10px;
   }
 
   .property-header h1 {
@@ -314,11 +446,6 @@
     font-size: 1.7rem;
   }
 
-  .description-box {
-    padding: 20px;
-    border-radius: 22px;
-  }
-
   .property-video-frame {
     border-radius: 20px;
   }
@@ -326,7 +453,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .back-link,
-  .thumbnail-list img {
+  .thumbnail-list img,
+  .gallery-nav {
     transition: none;
   }
 }

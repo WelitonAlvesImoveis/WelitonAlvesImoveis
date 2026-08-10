@@ -39,12 +39,32 @@
       <section id="property-details" class="property-layout hidden">
         <div class="property-visuals">
           <div class="gallery-card">
-            <img
-              id="main-image"
-              src="./assets/placeholder.jpg"
-              alt="Imagem do imóvel"
-              class="main-image"
-            />
+            <div class="gallery-stage">
+              <img
+                id="main-image"
+                src="./assets/placeholder.jpg"
+                alt="Imagem do imóvel"
+                class="main-image"
+              />
+
+              <button
+                type="button"
+                id="gallery-prev"
+                class="gallery-nav gallery-nav--prev"
+                aria-label="Imagem anterior"
+              >
+                <span aria-hidden="true">&lsaquo;</span>
+              </button>
+
+              <button
+                type="button"
+                id="gallery-next"
+                class="gallery-nav gallery-nav--next"
+                aria-label="Próxima imagem"
+              >
+                <span aria-hidden="true">&rsaquo;</span>
+              </button>
+            </div>
 
             <div id="thumbnail-list" class="thumbnail-list"></div>
           </div>
@@ -52,14 +72,28 @@
 
         <aside class="property-info">
           <div class="property-info-card">
-
-            <h2 id="property-title"></h2>
-            <p id="property-price" class="price"></p>
-
-            <div class="property-meta">
-              <p id="property-location" class="location"></p>
-              <p id="property-address" class="address"></p>
+            <div class="property-info-head">
+              <h2 id="property-title"></h2>
+              <p id="property-price" class="price"></p>
             </div>
+
+            <ul class="property-facts">
+              <li class="property-fact">
+                <span class="property-fact__icon" aria-hidden="true">◎</span>
+                <div class="property-fact__body">
+                  <span class="property-fact__label">Localização</span>
+                  <p id="property-location" class="property-fact__value"></p>
+                </div>
+              </li>
+
+              <li class="property-fact">
+                <span class="property-fact__icon" aria-hidden="true">⌂</span>
+                <div class="property-fact__body">
+                  <span class="property-fact__label">Endereço</span>
+                  <p id="property-address" class="property-fact__value"></p>
+                </div>
+              </li>
+            </ul>
 
             <section class="description-box">
               <h3>Descrição</h3>

@@ -5,6 +5,8 @@ const propertyDetails = document.getElementById("property-details");
 
 const mainImage = document.getElementById("main-image");
 const thumbnailList = document.getElementById("thumbnail-list");
+const galleryPrev = document.getElementById("gallery-prev");
+const galleryNext = document.getElementById("gallery-next");
 
 const propertyTitle = document.getElementById("property-title");
 const propertyPrice = document.getElementById("property-price");
@@ -26,27 +28,69 @@ function getPropertyIdFromUrl() {
   return params.get("id");
 }
 
+/* Galeria: imagens carregadas e indice exibido no momento. */
+let galleryImages = [];
+let currentImageIndex = 0;
+
+/* Troca a imagem principal e destaca a miniatura correspondente.
+   O indice circula, entao avancar na ultima imagem volta para a primeira. */
+function setActiveImage(index) {
+  if (galleryImages.length === 0) return;
+
+  const total = galleryImages.length;
+  currentImageIndex = (index + total) % total;
+
+  mainImage.src = galleryImages[currentImageIndex].url;
+
+  thumbnailList.querySelectorAll("img").forEach((thumb, thumbIndex) => {
+    const isActive = thumbIndex === currentImageIndex;
+    thumb.classList.toggle("is-active", isActive);
+    thumb.setAttribute("aria-current", isActive ? "true" : "false");
+  });
+}
+
 function renderImages(images) {
-  const propertyImages =
+  galleryImages =
     images && images.length > 0
       ? images
       : [{ url: "./assets/placeholder.jpg" }];
 
-  mainImage.src = propertyImages[0].url;
   thumbnailList.innerHTML = "";
 
-  propertyImages.forEach((image) => {
+  galleryImages.forEach((image, index) => {
     const thumb = document.createElement("img");
     thumb.src = image.url;
-    thumb.alt = "Miniatura do imóvel";
+    thumb.alt = `Miniatura ${index + 1} do imóvel`;
+    thumb.tabIndex = 0;
+    thumb.setAttribute("role", "button");
 
-    thumb.addEventListener("click", () => {
-      mainImage.src = image.url;
+    thumb.addEventListener("click", () => setActiveImage(index));
+
+    thumb.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActiveImage(index);
+      }
     });
 
     thumbnailList.appendChild(thumb);
   });
+
+  /* Com uma unica imagem as setas nao tem funcao. */
+  const hasMultipleImages = galleryImages.length > 1;
+  galleryPrev.hidden = !hasMultipleImages;
+  galleryNext.hidden = !hasMultipleImages;
+
+  setActiveImage(0);
 }
+
+galleryPrev.addEventListener("click", () => {
+  setActiveImage(currentImageIndex - 1);
+});
+
+galleryNext.addEventListener("click", () => {
+  setActiveImage(currentImageIndex + 1);
+});
 
 function renderPropertyVideo(videoUrl) {
   const embedUrl = window.propertyVideoUtils?.getYouTubeEmbedUrl(videoUrl);
@@ -64,10 +108,16 @@ function renderPropertyVideo(videoUrl) {
 function renderProperty(property) {
   propertyTitle.textContent = property.title || "Imóvel";
   propertyPrice.textContent = formatPrice(property.price || 0);
-  propertyLocation.textContent = `${property.neighborhood || ""} - ${property.city || ""}/${property.state || ""}`;
-  propertyAddress.textContent = property.address
-    ? `Endereço: ${property.address}`
-    : "Endereço não informado";
+  /* Os rotulos "Localizacao"/"Endereco" agora vem do HTML, entao aqui fica
+     apenas o valor. As partes vazias sao descartadas para nao sobrar
+     separador solto (ex.: " - Vila Velha/ES"). */
+  const cityAndState = [property.city, property.state].filter(Boolean).join("/");
+
+  propertyLocation.textContent =
+    [property.neighborhood, cityAndState].filter(Boolean).join(" - ") ||
+    "Não informado";
+
+  propertyAddress.textContent = property.address || "Não informado";
   propertyDescription.textContent =
     property.description || "Sem descrição disponível.";
 
