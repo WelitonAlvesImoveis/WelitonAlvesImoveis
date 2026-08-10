@@ -1,6 +1,6 @@
 import cloudinary from "../config/cloudinary.js";
 
-export const uploadImage = async (req, res) => {
+export const uploadImage = async (req, res, next) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "Nenhum arquivo enviado" });
@@ -18,9 +18,6 @@ export const uploadImage = async (req, res) => {
       publicId: result.public_id,
     });
   } catch (error) {
-    return res.status(500).json({
-      message: "Erro ao enviar imagem",
-      error: error.message,
-    });
+    next(error);
   }
 };
