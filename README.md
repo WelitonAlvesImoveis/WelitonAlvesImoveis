@@ -54,7 +54,7 @@ Frontend:
 
 Infraestrutura:
 
-- Vercel
+- Netlify
 - Render
 - MongoDB Atlas
 
