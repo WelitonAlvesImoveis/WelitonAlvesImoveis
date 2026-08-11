@@ -30,7 +30,6 @@ Frontend (Vercel)
 - Senhas criptografadas com bcrypt
 - Cadastro de imóveis
 - Edição de imóveis
-- Inativação (soft delete)
 - Upload de imagens
 - Atualização automática na landing page
 

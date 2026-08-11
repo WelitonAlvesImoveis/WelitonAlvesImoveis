@@ -15,6 +15,10 @@ const propertyAddress = document.getElementById("property-address");
 const propertyDescription = document.getElementById("property-description");
 const propertyVideoCard = document.getElementById("property-video-card");
 const propertyVideoIframe = document.getElementById("property-video-iframe");
+const whatsappCta = document.getElementById("whatsapp-cta");
+
+/* Numero oficial de atendimento, no formato aceito pelo wa.me (DDI + DDD + numero). */
+const WHATSAPP_NUMBER = "5527988437763";
 
 function formatPrice(value) {
   return new Intl.NumberFormat("pt-BR", {
@@ -105,6 +109,18 @@ function renderPropertyVideo(videoUrl) {
   propertyVideoCard.classList.remove("hidden");
 }
 
+/* Monta o link do CTA com o titulo do imovel ja carregado, para que a conversa
+   comece indicando qual anuncio gerou o contato. Sem titulo, o href estatico do
+   HTML (mensagem generica) permanece valido. */
+function renderWhatsappCta(title) {
+  if (!whatsappCta || !title) return;
+
+  const message = `Olá! Tenho interesse no imóvel ${title}`;
+  whatsappCta.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    message
+  )}`;
+}
+
 function renderProperty(property) {
   propertyTitle.textContent = property.title || "Imóvel";
   propertyPrice.textContent = formatPrice(property.price || 0);
@@ -123,6 +139,7 @@ function renderProperty(property) {
 
   renderImages(property.images);
   renderPropertyVideo(property.videoUrl);
+  renderWhatsappCta(property.title);
 
   loading.classList.add("hidden");
   propertyDetails.classList.remove("hidden");

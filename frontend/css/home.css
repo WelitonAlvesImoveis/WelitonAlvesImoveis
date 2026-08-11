@@ -472,66 +472,7 @@ cite.institutional-author span {
   display: none;
 }
 
-.site-footer {
-  background: var(--color-primary-dark);
-  color: rgba(var(--color-white-rgb), 0.88);
-  border-top: 1px solid rgba(var(--color-white-rgb), 0.08);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
-  gap: var(--space-8);
-  padding: var(--space-16) 0;
-}
-
-.footer-title {
-  font-family: var(--font-heading);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-bold);
-  color: #ffffff;
-  margin-bottom: var(--space-4);
-}
-
-.footer-text {
-  color: rgba(var(--color-white-rgb), 0.65);
-  line-height: 1.7;
-  font-size: var(--fs-base);
-}
-
-.footer-heading {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--color-brown-light);
-  margin-bottom: var(--space-4);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.footer-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.footer-list li {
-  color: rgba(var(--color-white-rgb), 0.65);
-  line-height: 1.6;
-  font-size: var(--fs-base);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(var(--color-white-rgb), 0.08);
-}
-
-.footer-bottom__content {
-  padding: var(--space-5) 0;
-}
-
-.footer-bottom__content p {
-  color: rgba(var(--color-white-rgb), 0.40);
-  font-size: 0.95rem;
-}
+/* Estilos do footer ficam em global.css, pois sao compartilhados com property.html. */
 
 @media (max-width: 992px) {
   .hero {
@@ -577,10 +518,6 @@ cite.institutional-author span {
 
   .properties-section {
     padding-top: var(--space-10);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -695,14 +632,5 @@ cite.institutional-author span {
   .details-button {
     min-height: 48px;
     font-size: var(--fs-sm);
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-text,
-  .footer-list li {
-    font-size: 0.95rem;
   }
 }
