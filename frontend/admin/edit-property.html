@@ -77,12 +77,19 @@
 
               <div class="form-group">
                 <label for="price">Preço</label>
-                <input type="number" id="price" name="price" min="0" required />
-              </div>
-
-              <div class="form-group">
-                <label for="city">Cidade</label>
-                <input type="text" id="city" name="city" required />
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  placeholder="Ex.: 450.000"
+                  required
+                />
+                <small class="field-help">
+                  Digite apenas números: o separador de milhar é aplicado
+                  automaticamente.
+                </small>
               </div>
 
               <div class="form-group form-group-full">
@@ -114,6 +121,11 @@
                 <label for="state">Estado</label>
                 <input type="text" id="state" name="state" value="ES" maxlength="2" disabled />
                 <input type="hidden" name="state" value="ES" />
+              </div>
+
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" id="city" name="city" required />
               </div>
 
               <div class="form-group">
@@ -188,6 +200,7 @@
 
     <script src="../js/config.js"></script>
     <script src="../js/youtube-utils.js"></script>
+    <script src="../js/price-mask.js"></script>
     <script src="../js/message-modal.js"></script>
     <script src="../js/edit-property.js"></script>
   </body>

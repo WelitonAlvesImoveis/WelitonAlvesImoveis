@@ -1,8 +1,10 @@
-/* Editado: valida e envia o link opcional de vídeo do imóvel junto com o FormData de cadastro. */
 const form = document.getElementById("create-property-form");
 const successMessage = document.getElementById("success-message");
 const errorMessage = document.getElementById("error-message");
 const videoUrlInput = document.getElementById("videoUrl");
+const priceInput = document.getElementById("price");
+
+window.propertyPriceUtils?.attachPriceMask(priceInput);
 
 function getToken() {
   return localStorage.getItem("token");
@@ -44,8 +46,16 @@ form.addEventListener("submit", async (event) => {
       );
     }
 
+    const rawPrice =
+      window.propertyPriceUtils?.toRawPrice(priceInput?.value) ?? "";
+
+    if (!rawPrice) {
+      throw new Error("Informe o preço do imóvel.");
+    }
+
     const formData = new FormData(form);
     formData.set("videoUrl", normalizedVideoUrl);
+    formData.set("price", rawPrice);
 
     const response = await fetch(`${API_BASE_URL}/api/properties`, {
       method: "POST",

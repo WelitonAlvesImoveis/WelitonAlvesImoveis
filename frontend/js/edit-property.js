@@ -1,9 +1,11 @@
-/* Editado: carrega, valida e envia o link opcional de vídeo do imóvel no fluxo de edição. */
 const loadingMessage = document.getElementById("loading-message");
 const errorMessage = document.getElementById("error-message");
 const form = document.getElementById("edit-property-form");
 const currentImagesList = document.getElementById("current-images-list");
 const videoUrlInput = document.getElementById("videoUrl");
+const priceInput = document.getElementById("price");
+
+window.propertyPriceUtils?.attachPriceMask(priceInput);
 
 function getToken() {
   return localStorage.getItem("token");
@@ -85,7 +87,7 @@ async function loadProperty() {
 
     document.getElementById("title").value = property.title || "";
     document.getElementById("description").value = property.description || "";
-    document.getElementById("price").value = property.price || "";
+    window.propertyPriceUtils?.setMaskedValue(priceInput, property.price ?? "");
     document.getElementById("city").value = property.city || "";
     document.getElementById("state").value = property.state || "";
     document.getElementById("neighborhood").value = property.neighborhood || "";
@@ -125,8 +127,16 @@ form.addEventListener("submit", async (event) => {
       );
     }
 
+    const rawPrice =
+      window.propertyPriceUtils?.toRawPrice(priceInput?.value) ?? "";
+
+    if (!rawPrice) {
+      throw new Error("Informe o preço do imóvel.");
+    }
+
     const formData = new FormData(form);
     formData.set("videoUrl", normalizedVideoUrl);
+    formData.set("price", rawPrice);
 
     const response = await fetch(`${API_BASE_URL}/api/properties/${propertyId}`, {
       method: "PUT",

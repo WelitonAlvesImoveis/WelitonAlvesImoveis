@@ -1,4 +1,4 @@
-/* Alterado: unificado com o padrão visual do dashboard (superfícies sólidas, bordas de 2px, sem gradientes). */
+
 .edit-property-page {
   min-height: 100vh;
   padding: 40px 18px 64px;
@@ -172,6 +172,12 @@
   font-weight: var(--fw-semibold);
   line-height: 1.4;
   color: var(--color-text-soft);
+}
+
+.field-help {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
 }
 
 .form-group input,

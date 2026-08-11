@@ -83,26 +83,18 @@
                 <div class="form-group">
                   <label for="price">Preço</label>
                   <input
-                    type="number"
+                    type="text"
                     id="price"
                     name="price"
-                    min="0"
-                    step="1000"
-                    placeholder="Ex.: 450000"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Ex.: 450.000"
                     required
                   />
-                </div>
-
-                <div class="form-group">
-                  <label for="city">Cidade</label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    autocomplete="address-level2"
-                    placeholder="Ex.: Vila Velha"
-                    required
-                  />
+                  <small class="field-help">
+                    Digite apenas números: o separador de milhar é aplicado
+                    automaticamente.
+                  </small>
                 </div>
 
                 <div class="form-group form-group-full">
@@ -145,6 +137,18 @@
                     disabled
                   />
                   <input type="hidden" name="state" value="ES" />
+                </div>
+
+                <div class="form-group">
+                  <label for="city">Cidade</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    autocomplete="address-level2"
+                    placeholder="Ex.: Vila Velha"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
@@ -220,6 +224,7 @@
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/youtube-utils.js"></script>
+    <script src="../js/price-mask.js"></script>
     <script src="../js/create-property.js"></script>
   </body>
 </html>

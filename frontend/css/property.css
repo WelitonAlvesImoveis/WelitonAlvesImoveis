@@ -344,6 +344,9 @@
   margin: 0;
   color: var(--color-text-muted);
   line-height: var(--lh-relaxed);
+  /* preserva as quebras de linha e linhas em branco digitadas pelo admin */
+  white-space: pre-line;
+  overflow-wrap: break-word;
 }
 
 .property-video-card {
