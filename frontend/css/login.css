@@ -6,7 +6,7 @@
   padding: var(--space-8) var(--space-4);
   position: relative;
   background-image:
-    linear-gradient(180deg, rgba(87, 98, 121, 0.88)),
+    linear-gradient(180deg, rgba(115, 125, 146, 0.88)),
     url('../assets/background_image.png');
   background-size: cover;
   background-position: center;
