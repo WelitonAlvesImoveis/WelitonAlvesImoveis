@@ -8,7 +8,7 @@ O projeto segue arquitetura moderna desacoplada utilizada por startups.
 
 ## Arquitetura
 
-Frontend (Vercel)  
+Frontend (Netlify)  
 → API Node.js + Express (Render)  
 → MongoDB Atlas  
 → Cloudinary (armazenamento de imagens)
